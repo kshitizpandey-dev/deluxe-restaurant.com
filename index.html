@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deluxe Family Restaurant — Tandoori · Mughlai · Punjabi · Chinese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Marcellus&family=Work+Sans:wght@400;500;600&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#17140F;
+  --charcoal:#221E18;
+  --stone:#5C5650;
+  --cream:#F4ECDC;
+  --cream-dim:#E7DCC4;
+  --gold:#C9962F;
+  --gold-soft:#A87E3E;
+  --gold-line:rgba(201,150,47,0.35);
+  --ember:#9B3320;
+  --ember-soft:#B6492F;
+  --serif:"Cormorant Garamond", serif;
+  --display:"Marcellus", serif;
+  --sans:"Work Sans", sans-serif;
+  --mono:"Roboto Mono", monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--black);
+  color:var(--cream);
+  font-family:var(--sans);
+  font-weight:400;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+
+/* ===== brass line motif ===== */
+.brass-divider{
+  width:100%;
+  height:34px;
+  background-image:
+    linear-gradient(115deg, transparent 47%, var(--gold-line) 47.6%, var(--gold-line) 48.2%, transparent 49%),
+    linear-gradient(65deg, transparent 47%, var(--gold-line) 47.6%, var(--gold-line) 48.2%, transparent 49%);
+  background-size: 56px 34px;
+  opacity:0.7;
+}
+
+/* ===== top bar ===== */
+.topbar{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(23,20,15,0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--gold-line);
+}
+.topbar-inner{
+  max-width:1180px;margin:0 auto;padding:16px 32px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.brandmark{display:flex;align-items:center;gap:12px;}
+.brandmark .dr{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:15px;color:var(--gold);
+  letter-spacing:0.5px;
+}
+.brandmark .name{font-family:var(--display);font-size:17px;letter-spacing:0.5px;color:var(--cream);}
+.brandmark .name span{display:block;font-family:var(--sans);font-size:9px;letter-spacing:2.5px;color:var(--gold-soft);font-weight:500;margin-top:1px;}
+nav{display:flex;gap:34px;}
+nav a{font-size:13px;letter-spacing:1.3px;text-transform:uppercase;color:var(--cream-dim);font-weight:500;transition:color 0.2s;}
+nav a:hover{color:var(--gold);}
+.call-btn{
+  border:1px solid var(--gold);color:var(--gold);
+  padding:9px 20px;font-size:12.5px;letter-spacing:1.5px;text-transform:uppercase;
+  border-radius:2px;font-weight:500;transition:all 0.2s;white-space:nowrap;
+}
+.call-btn:hover{background:var(--gold);color:var(--black);}
+.menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:24px;cursor:pointer;}
+
+/* ===== hero ===== */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;align-items:center;
+  background:linear-gradient(180deg, rgba(23,20,15,0.55) 0%, rgba(23,20,15,0.78) 55%, var(--black) 100%), url('assets/interior.png') center 30%/cover no-repeat;
+  padding-top:90px;
+}
+.hero-inner{max-width:1180px;margin:0 auto;padding:0 32px;width:100%;}
+.eyebrow{
+  font-family:var(--sans);font-size:13px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:14px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);}
+.hero h1{
+  font-family:var(--display);
+  font-size:clamp(48px,8vw,92px);
+  line-height:1.02;
+  color:var(--cream);
+  font-weight:400;
+  max-width:780px;
+}
+.hero h1 em{
+  font-family:var(--serif);font-style:italic;font-weight:500;color:var(--gold);
+  display:block;font-size:clamp(40px,6.4vw,72px);
+}
+.hero p.lede{
+  font-size:18px;color:var(--cream-dim);max-width:480px;margin-top:26px;font-weight:400;line-height:1.7;
+}
+.hero-ctas{display:flex;gap:16px;margin-top:42px;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:var(--black);padding:16px 32px;font-size:13.5px;
+  letter-spacing:1.6px;text-transform:uppercase;font-weight:500;border-radius:2px;
+  transition:transform 0.2s, background 0.2s;
+}
+.btn-primary:hover{background:#dba83c;transform:translateY(-1px);}
+.btn-secondary{
+  border:1px solid rgba(244,236,220,0.35);color:var(--cream);padding:16px 32px;
+  font-size:13.5px;letter-spacing:1.6px;text-transform:uppercase;font-weight:500;border-radius:2px;
+  transition:all 0.2s;
+}
+.btn-secondary:hover{border-color:var(--cream);background:rgba(244,236,220,0.06);}
+
+.hero-meta{
+  display:flex;gap:48px;margin-top:72px;flex-wrap:wrap;
+  border-top:1px solid var(--gold-line);padding-top:28px;max-width:760px;
+}
+.hero-meta div{display:flex;flex-direction:column;gap:4px;}
+.hero-meta .num{font-family:var(--display);font-size:26px;color:var(--gold);}
+.hero-meta .lbl{font-size:11.5px;letter-spacing:1.3px;text-transform:uppercase;color:var(--stone);}
+
+/* ===== marquee strip ===== */
+.marquee-strip{
+  background:var(--gold);color:var(--black);padding:13px 0;overflow:hidden;white-space:nowrap;
+  border-top:1px solid var(--black);border-bottom:1px solid var(--black);
+}
+.marquee-track{display:inline-block;animation:scroll 32s linear infinite;font-family:var(--display);font-size:14.5px;letter-spacing:1.5px;}
+.marquee-track span{margin:0 28px;}
+@keyframes scroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@media (prefers-reduced-motion: reduce){.marquee-track{animation:none;}}
+
+/* ===== section shells ===== */
+section{padding:110px 0;}
+.section-head{max-width:640px;margin-bottom:64px;}
+.section-head .eyebrow{margin-bottom:18px;}
+.section-head h2{font-family:var(--display);font-size:clamp(34px,4.5vw,48px);color:var(--cream);line-height:1.1;}
+.section-head p{color:var(--stone);font-size:16px;margin-top:16px;max-width:520px;}
+
+/* ===== about / story ===== */
+.about{background:var(--charcoal);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;}
+.about-copy p{color:var(--cream-dim);font-size:16.5px;margin-bottom:18px;line-height:1.8;}
+.about-copy p:first-child{font-family:var(--serif);font-size:24px;font-style:italic;color:var(--cream);line-height:1.5;margin-bottom:26px;}
+.about-tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.tag{
+  border:1px solid var(--gold-line);color:var(--gold);font-size:11.5px;letter-spacing:1.2px;
+  text-transform:uppercase;padding:8px 16px;border-radius:2px;
+}
+.about-photo{
+  position:relative;border:1px solid var(--gold-line);padding:14px;
+}
+.about-photo img{filter:saturate(0.92) contrast(1.05);}
+.about-photo::after{
+  content:"";position:absolute;top:-12px;right:-12px;width:80px;height:80px;
+  border-top:1px solid var(--gold);border-right:1px solid var(--gold);
+}
+
+/* ===== menu section ===== */
+.menu-section{background:var(--black);}
+.menu-filters{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:48px;
+  border-bottom:1px solid var(--gold-line);padding-bottom:36px;
+}
+.filter-btn{
+  background:none;border:1px solid var(--stone);color:var(--cream-dim);
+  font-family:var(--sans);font-size:12.5px;letter-spacing:1.1px;text-transform:uppercase;
+  padding:10px 18px;border-radius:2px;cursor:pointer;transition:all 0.2s;font-weight:500;
+}
+.filter-btn:hover{border-color:var(--gold);color:var(--gold);}
+.filter-btn.active{background:var(--gold);border-color:var(--gold);color:var(--black);}
+
+.menu-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;}
+.menu-cat{display:none;}
+.menu-cat.active{display:block;animation:fadein 0.4s ease;}
+@keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.menu-cat-full{grid-column:1 / -1;}
+
+.cat-title{
+  font-family:var(--display);font-size:22px;color:var(--gold);margin-bottom:6px;
+  display:flex;align-items:center;gap:12px;
+}
+.cat-sub{color:var(--stone);font-size:13px;margin-bottom:28px;font-style:italic;font-family:var(--serif);}
+
+.dish{
+  display:flex;justify-content:space-between;gap:18px;padding:18px 0;
+  border-bottom:1px solid rgba(244,236,220,0.08);
+}
+.dish:last-child{border-bottom:none;}
+.dish-name{font-size:16.5px;color:var(--cream);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+.dish-desc{font-size:13.5px;color:var(--stone);margin-top:4px;max-width:380px;line-height:1.55;}
+.dish-price{
+  font-family:var(--mono);font-size:15px;color:var(--gold);white-space:nowrap;padding-top:1px;font-weight:500;
+}
+.badge{
+  font-size:9.5px;letter-spacing:0.8px;text-transform:uppercase;font-weight:500;
+  padding:2px 7px;border-radius:2px;line-height:1.6;
+}
+.badge.halal{background:rgba(201,150,47,0.15);color:var(--gold);}
+.badge.veg{background:rgba(99,153,34,0.18);color:#9DC15B;}
+
+.menu-twocol .dish-block{break-inside:avoid;}
+
+/* ===== signature dishes (chef's picks) ===== */
+.signature{background:var(--charcoal);}
+.sig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+.sig-card{
+  border:1px solid var(--gold-line);padding:30px 26px;position:relative;
+  transition:border-color 0.25s, transform 0.25s;
+}
+.sig-card:hover{border-color:var(--gold);transform:translateY(-4px);}
+.sig-num{font-family:var(--mono);font-size:12px;color:var(--stone);letter-spacing:1px;}
+.sig-card h3{font-family:var(--display);font-size:21px;color:var(--cream);margin:14px 0 10px;}
+.sig-card p{font-size:14px;color:var(--stone);line-height:1.7;margin-bottom:18px;}
+.sig-price{font-family:var(--mono);color:var(--gold);font-size:15px;font-weight:500;}
+
+/* ===== gallery strip ===== */
+.gallery{background:var(--black);padding-bottom:0;}
+.gallery-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:6px;height:520px;}
+.gallery-grid img{width:100%;height:100%;object-fit:cover;filter:saturate(0.95) contrast(1.05);}
+.gallery-grid .tall{height:520px;}
+.gallery-col{display:grid;grid-template-rows:1fr 1fr;gap:6px;height:520px;}
+
+/* ===== visit / contact ===== */
+.visit{background:var(--charcoal);}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;}
+.visit-card h3{font-family:var(--display);font-size:20px;color:var(--gold);margin-bottom:14px;}
+.visit-card p, .visit-card a{color:var(--cream-dim);font-size:15.5px;line-height:1.8;}
+.visit-block{margin-bottom:40px;}
+.hours-row{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(244,236,220,0.08);font-size:14.5px;}
+.hours-row .d{color:var(--cream-dim);}
+.hours-row .t{font-family:var(--mono);color:var(--gold);font-size:13.5px;}
+.map-frame{border:1px solid var(--gold-line);height:100%;min-height:380px;background:var(--black);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.map-frame iframe{width:100%;height:100%;border:0;filter:grayscale(0.3) contrast(1.1);}
+
+/* ===== footer ===== */
+footer{background:var(--black);border-top:1px solid var(--gold-line);padding:60px 0 30px;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;margin-bottom:48px;}
+.footer-brand .brandmark{margin-bottom:18px;}
+.footer-brand p{color:var(--stone);font-size:14px;line-height:1.7;max-width:300px;}
+.footer-col h4{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.footer-col a, .footer-col p{display:block;color:var(--cream-dim);font-size:14.5px;margin-bottom:10px;}
+.footer-col a:hover{color:var(--gold);}
+.footer-bottom{
+  border-top:1px solid rgba(244,236,220,0.08);padding-top:24px;
+  display:flex;justify-content:space-between;color:var(--stone);font-size:12.5px;flex-wrap:wrap;gap:10px;
+}
+
+/* ===== sticky call button mobile ===== */
+.float-call{display:none;}
+
+/* ===== responsive ===== */
+@media (max-width: 920px){
+  nav{display:none;}
+  .menu-toggle{display:block;}
+  .about-grid, .visit-grid{grid-template-columns:1fr;gap:42px;}
+  .sig-grid{grid-template-columns:1fr;}
+  .menu-grid{grid-template-columns:1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;height:auto;}
+  .gallery-grid .tall, .gallery-col{height:300px;}
+  .footer-grid{grid-template-columns:1fr;gap:30px;}
+  .hero-meta{gap:30px;}
+  section{padding:72px 0;}
+  .wrap{padding:0 20px;}
+  .topbar-inner{padding:14px 20px;}
+  .float-call{
+    display:flex;position:fixed;bottom:20px;right:20px;z-index:90;
+    width:56px;height:56px;border-radius:50%;background:var(--gold);color:var(--black);
+    align-items:center;justify-content:center;font-size:22px;box-shadow:0 4px 18px rgba(0,0,0,0.4);
+  }
+}
+@media (max-width:560px){
+  .hero h1{font-size:clamp(38px,11vw,52px);}
+  .hero h1 em{font-size:clamp(32px,9vw,42px);}
+}
+
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brandmark">
+      <div class="dr">DR</div>
+      <div class="name">Deluxe<span>Family Restaurant</span></div>
+    </div>
+    <nav>
+      <a href="#story">Story</a>
+      <a href="#menu">Menu</a>
+      <a href="#signature">Signature</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="call-btn" href="tel:+9174100 02825">Call to order</a>
+    <button class="menu-toggle" aria-label="Open menu">&#9776;</button>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">A.C. &amp; family hall · veg &amp; non-veg · halal · no beef</div>
+    <h1>Good food,<br>shared at<em>one table.</em></h1>
+    <p class="lede">Tandoori, Mughlai, Punjabi and Chinese, cooked the way a family restaurant should — generous, unhurried, and built for the whole table to share.</p>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#menu">View the menu</a>
+      <a class="btn-secondary" href="tel:+9174100 02825">Order delivery</a>
+    </div>
+    <div class="hero-meta">
+      <div><span class="num">4.2</span><span class="lbl">Rated · 238 reviews</span></div>
+      <div><span class="num">7</span><span class="lbl">Cuisines under one roof</span></div>
+      <div><span class="num">100+</span><span class="lbl">Dishes on the menu</span></div>
+      <div><span class="num">12 PM–12 AM</span><span class="lbl">Open daily</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>TANDOORI</span><span>·</span><span>MUGHLAI</span><span>·</span><span>PUNJABI</span><span>·</span><span>CHINESE</span><span>·</span><span>FALOODA &amp; MILKSHAKES</span><span>·</span><span>FREE HOME DELIVERY</span><span>·</span>
+    <span>TANDOORI</span><span>·</span><span>MUGHLAI</span><span>·</span><span>PUNJABI</span><span>·</span><span>CHINESE</span><span>·</span><span>FALOODA &amp; MILKSHAKES</span><span>·</span><span>FREE HOME DELIVERY</span><span>·</span>
+  </div>
+</div>
+
+<section class="about" id="story">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-copy">
+        <p>Walk in for the tandoor. Stay for the whole spread.</p>
+        <p>Deluxe Family Restaurant sits in Ahmedabad as a full family hall — air-conditioned, halal, and built around a menu wide enough that nobody at the table has to compromise. Punjabi gravies sit beside Indo-Chinese wok dishes, tandoori grills beside falooda and milkshakes.</p>
+        <p>No beef on the menu, halal throughout, and a kitchen that runs late into the night for the after-dinner crowd and the home-delivery order alike.</p>
+        <div class="about-tags">
+          <span class="tag">Veg &amp; non-veg</span>
+          <span class="tag">Halal kitchen</span>
+          <span class="tag">No beef</span>
+          <span class="tag">Free home delivery</span>
+          <span class="tag">A.C. family hall</span>
+        </div>
+      </div>
+      <div class="about-photo">
+        <img src="assets/interior4.png" alt="Deluxe Family Restaurant dining hall with brass-lined stone walls">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">The menu</div>
+      <h2>Everything, made to order.</h2>
+      <p>From clear soups to chicken handi, paneer kadhai to chowmein — the full table, organised by what you're in the mood for.</p>
+    </div>
+
+    <div class="menu-filters" id="filters">
+      <button class="filter-btn active" data-cat="soups">Soups</button>
+      <button class="filter-btn" data-cat="starters">Starters</button>
+      <button class="filter-btn" data-cat="paneer">Paneer &amp; veg mains</button>
+      <button class="filter-btn" data-cat="chicken">Chicken gravy</button>
+      <button class="filter-btn" data-cat="dal">Dal &amp; egg</button>
+      <button class="filter-btn" data-cat="noodles">Noodles &amp; fried rice</button>
+      <button class="filter-btn" data-cat="biryani">Rice &amp; biryani</button>
+      <button class="filter-btn" data-cat="combo">Combos &amp; platters</button>
+      <button class="filter-btn" data-cat="drinks">Falooda &amp; milkshakes</button>
+    </div>
+
+    <div class="menu-grid">
+
+      <div class="menu-cat menu-cat-full active" data-cat="soups">
+        <div class="cat-title">Soups</div>
+        <div class="cat-sub">Light starts, served hot</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Veg mushroom soup</div><div class="dish-desc">Fresh mushrooms and herbs, rich and creamy.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Veg manchow soup</div><div class="dish-desc">Spicy, savoury vegetables and sauces, served hot.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Veg hot &amp; sour soup</div><div class="dish-desc">Tangy and spicy, made with a variety of vegetables.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Veg clear soup</div><div class="dish-desc">Light, clear broth with fresh vegetables.</div></div><div class="dish-price">₹160</div></div>
+            <div class="dish"><div><div class="dish-name">Veg noodles soup</div><div class="dish-desc">Noodles and vegetables in a comforting clear broth.</div></div><div class="dish-price">₹175</div></div>
+            <div class="dish"><div><div class="dish-name">Tomato soup</div><div class="dish-desc">Fresh tomatoes blended with herbs and spices.</div></div><div class="dish-price">₹185</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken royal soup <span class="badge halal">Halal</span></div><div class="dish-desc">Rich, creamy soup with tender chicken, Indian spices.</div></div><div class="dish-price">₹205</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken manchow soup <span class="badge halal">Halal</span></div><div class="dish-desc">Garlic and chilli peppers, stir-fried for flavour.</div></div><div class="dish-price">₹205</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken hot &amp; sour soup <span class="badge halal">Halal</span></div><div class="dish-desc">Soy sauce and vinegar for a tangy, spicy bowl.</div></div><div class="dish-price">₹205</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken lung fung soup <span class="badge halal">Halal</span></div><div class="dish-desc">Chinese-inspired, finished with a hint of soy.</div></div><div class="dish-price">₹205</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken noodles soup <span class="badge halal">Halal</span></div><div class="dish-desc">Tender chicken and noodles in a light broth.</div></div><div class="dish-price">₹185</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="starters">
+        <div class="cat-title">Chinese starters</div>
+        <div class="cat-sub">From the wok</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken crispy <span class="badge halal">Halal</span></div></div><div class="dish-price">₹260</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken dragon <span class="badge halal">Halal</span></div></div><div class="dish-price">₹220</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken lollipop chatpata <span class="badge halal">Halal</span></div></div><div class="dish-price">₹215</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken lollipop dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹215</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken 65 dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken chilli dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken manchurian dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken hong kong dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹220</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken schezwan dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken garlic dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken ginger dry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken golden fry <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken satay <span class="badge halal">Halal</span></div></div><div class="dish-price">₹220</div></div>
+            <div class="dish"><div><div class="dish-name">Bone chilly <span class="badge halal">Halal</span></div></div><div class="dish-price">₹220</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken tikka chilli <span class="badge halal">Halal</span></div></div><div class="dish-price">₹250</div></div>
+            <div class="dish"><div><div class="dish-name">Veg crispy</div></div><div class="dish-price">₹220</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="paneer">
+        <div class="cat-title">Paneer &amp; vegetable mains</div>
+        <div class="cat-sub">Rich gravies, Punjabi style</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Paneer lazeez</div><div class="dish-desc">Rich creamy sauce with marinated paneer.</div></div><div class="dish-price">₹405</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer chatpata</div><div class="dish-desc">Spicy and tangy, with bell peppers and onions.</div></div><div class="dish-price">₹405</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer mumtaz</div><div class="dish-desc">Mild, creamy, a hint of cardamom and nuts.</div></div><div class="dish-price">₹460</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer kothmiri</div><div class="dish-desc">Fresh cilantro and green chillies.</div></div><div class="dish-price">₹460</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer kolhapuri spicy</div><div class="dish-desc">Bold Kolhapuri spice blend.</div></div><div class="dish-price">₹335</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer chingari spicy</div><div class="dish-desc">Bell peppers and onions, served hot.</div></div><div class="dish-price">₹415</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer bhurji</div><div class="dish-desc">Scrambled paneer, onions, tomatoes and spices.</div></div><div class="dish-price">₹405</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer tikka masala</div><div class="dish-desc">Grilled paneer in a smoky tomato sauce.</div></div><div class="dish-price">₹415</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer tawa</div><div class="dish-desc">Sizzling tawa, spices and bell peppers.</div></div><div class="dish-price">₹415</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer kadhai</div><div class="dish-desc">Special kadhai masala, bell peppers and onions.</div></div><div class="dish-price">₹335</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer handi</div><div class="dish-desc">Tender paneer in a rich creamy sauce.</div></div><div class="dish-price">₹320</div></div>
+            <div class="dish"><div><div class="dish-name">Paneer butter masala</div><div class="dish-desc">Smooth, buttery, classic.</div></div><div class="dish-price">₹335</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Mushroom makanwala</div><div class="dish-desc">Tender mushrooms in a rich creamy sauce.</div></div><div class="dish-price">₹405</div></div>
+            <div class="dish"><div><div class="dish-name">Mushroom kadhai</div><div class="dish-desc">Stir-fried with onions and peppers, spicy tomato base.</div></div><div class="dish-price">₹405</div></div>
+            <div class="dish"><div><div class="dish-name">Mushroom masala</div><div class="dish-desc">A touch of cream, savoury and slightly spicy.</div></div><div class="dish-price">₹370</div></div>
+            <div class="dish"><div><div class="dish-name">Kaju masala</div><div class="dish-desc">Cashews simmered in a velvety tomato sauce.</div></div><div class="dish-price">₹380</div></div>
+            <div class="dish"><div><div class="dish-name">Veg toofani spicy</div><div class="dish-desc">A blend of vegetables and chillies that ignites.</div></div><div class="dish-price">₹505</div></div>
+            <div class="dish"><div><div class="dish-name">Veg mumtaz</div><div class="dish-desc">Vegetables in a creamy, mildly spiced sauce.</div></div><div class="dish-price">₹530</div></div>
+            <div class="dish"><div><div class="dish-name">Veg zaitoon</div><div class="dish-desc">Olives and a blend of spices, with basmati rice.</div></div><div class="dish-price">₹530</div></div>
+            <div class="dish"><div><div class="dish-name">Veg deluxe special</div><div class="dish-desc">Seasonal vegetables in a rich creamy sauce.</div></div><div class="dish-price">₹335</div></div>
+            <div class="dish"><div><div class="dish-name">Veg kolhapuri spicy</div><div class="dish-desc">Chillies and spices, flavourful and bold.</div></div><div class="dish-price">₹290</div></div>
+            <div class="dish"><div><div class="dish-name">Veg kadhai</div><div class="dish-desc">Wok-cooked, bell peppers and onions.</div></div><div class="dish-price">₹300</div></div>
+            <div class="dish"><div><div class="dish-name">Veg makanwala</div><div class="dish-desc">Rich, creamy, a variety of vegetables.</div></div><div class="dish-price">₹290</div></div>
+            <div class="dish"><div><div class="dish-name">Veg handi</div><div class="dish-desc">Earthen-pot cooked, aromatic and flavourful.</div></div><div class="dish-price">₹265</div></div>
+            <div class="dish"><div><div class="dish-name">Chana masala</div><div class="dish-desc">Chickpeas in a spicy tomato base.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Mix veg</div><div class="dish-desc">Sautéed vegetables in a rich tomato sauce.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Matar paneer</div><div class="dish-desc">Fresh peas and paneer, classic North Indian.</div></div><div class="dish-price">₹265</div></div>
+            <div class="dish"><div><div class="dish-name">Veg aflatoon</div><div class="dish-desc">A flavourful mix of vegetables, thick aromatic gravy.</div></div><div class="dish-price">₹505</div></div>
+            <div class="dish"><div><div class="dish-name">Veg jaipuri</div><div class="dish-desc">Royal Jaipur-style, mild and creamy.</div></div><div class="dish-price">₹290</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="chicken">
+        <div class="cat-title">Chicken gravy</div>
+        <div class="cat-sub">Mughlai &amp; Punjabi, halal</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken chulbul gravy <span class="badge halal">Halal</span></div><div class="dish-desc">Tender chicken in a rich tomato sauce.</div></div><div class="dish-price">₹600</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken aflatoon gravy <span class="badge halal">Halal</span></div><div class="dish-desc">Marinated chicken in a creamy, spiced sauce.</div></div><div class="dish-price">₹600</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken zaitoon gravy <span class="badge halal">Halal</span></div><div class="dish-desc">Cooked with olives and Indian spices.</div></div><div class="dish-price">₹600</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken kothmiri gravy <span class="badge halal">Halal</span></div><div class="dish-desc">Fresh cilantro and green chillies.</div></div><div class="dish-price">₹610</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken hungama gravy <span class="badge halal">Halal</span></div><div class="dish-desc">Creamy, slightly spicy, Indian spice blend.</div></div><div class="dish-price">₹1,010</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken tikka chilli masala <span class="badge halal">Halal</span></div><div class="dish-desc">Smoky chicken in a spicy chilli masala.</div></div><div class="dish-price">₹680</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken kolhapuri</div><div class="dish-desc">From the Chinese gravy list, made to order.</div></div><div class="dish-price">Ask staff</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="dal">
+        <div class="cat-title">Dal &amp; egg</div>
+        <div class="cat-sub">Everyday comfort</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Shahi dal</div><div class="dish-desc">Black lentils and kidney beans, a touch of cardamom.</div></div><div class="dish-price">₹195</div></div>
+            <div class="dish"><div><div class="dish-name">Dal tadka</div><div class="dish-desc">Yellow lentils, garlic, finished with ghee.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Butter dal fry</div><div class="dish-desc">Black lentils in creamy tomato sauce with butter.</div></div><div class="dish-price">₹185</div></div>
+            <div class="dish"><div><div class="dish-name">Dal fry</div><div class="dish-desc">Split red lentils, lightly spiced, a hint of cumin.</div></div><div class="dish-price">₹160</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Egg curry</div><div class="dish-desc">Boiled eggs in a rich tomato-based sauce.</div></div><div class="dish-price">₹205</div></div>
+            <div class="dish"><div><div class="dish-name">Egg bhurji</div><div class="dish-desc">Scrambled eggs, onions, tomatoes and spices.</div></div><div class="dish-price">₹140</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="noodles">
+        <div class="cat-title">Noodles, fried rice &amp; chowmein</div>
+        <div class="cat-sub">Indo-Chinese, made fresh to order</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken malaysian noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹350</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken triple schezwan noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹220</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken manchurian noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹190</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken hong kong noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹190</div></div>
+            <div class="dish"><div><div class="dish-name">Chicken hakka noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹190</div></div>
+            <div class="dish"><div><div class="dish-name">Egg hakka noodles / schn noodles</div></div><div class="dish-price">₹140–150</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Veg hakka noodles / schn noodles</div></div><div class="dish-price">₹170</div></div>
+            <div class="dish"><div><div class="dish-name">Mix schezwan noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹210</div></div>
+            <div class="dish"><div><div class="dish-name">Mix triple schezwan noodles <span class="badge halal">Halal</span></div></div><div class="dish-price">₹150–230</div></div>
+            <div class="dish"><div><div class="dish-name">Singapore fried rice</div></div><div class="dish-price">₹160–210</div></div>
+            <div class="dish"><div><div class="dish-name">Schezwan / combination fried rice</div></div><div class="dish-price">₹140–230</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="biryani">
+        <div class="cat-title">Rice &amp; biryani</div>
+        <div class="cat-sub">Slow-cooked, dum style</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken biryani <span class="badge halal">Halal</span></div><div class="dish-desc">Part of the Ramzan special combo.</div></div><div class="dish-price">In combo</div></div>
+            <div class="dish"><div><div class="dish-name">Veg biryani</div></div><div class="dish-price">Ask staff</div></div>
+            <div class="dish"><div><div class="dish-name">Jeera rice</div></div><div class="dish-price">Ask staff</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Veg pulao</div></div><div class="dish-price">Ask staff</div></div>
+            <div class="dish"><div><div class="dish-name">Steamed rice</div></div><div class="dish-price">Ask staff</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="combo">
+        <div class="cat-title">Combos &amp; platters</div>
+        <div class="cat-sub">Built for the whole table</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Special butter chicken &amp; biryani combo <span class="badge halal">Halal</span></div><div class="dish-desc">Butter chicken, chicken biryani, 2pc gulab jamun, tandoori butter naan.</div></div><div class="dish-price">₹399</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Chicken mixed platter <span class="badge halal">Halal</span></div><div class="dish-desc">Pahadi, kalimiri, reshmi &amp; banjara kebab (4pc each), chicken tikka (4pc), half tandoori chicken.</div></div><div class="dish-price">₹1,610</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="menu-cat menu-cat-full" data-cat="drinks">
+        <div class="cat-title">Falooda &amp; milkshakes</div>
+        <div class="cat-sub">To finish, or to cool down</div>
+        <div class="menu-grid menu-twocol" style="margin-top:0;">
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Deluxe special falooda</div></div><div class="dish-price">₹150</div></div>
+            <div class="dish"><div><div class="dish-name">Royal falooda / kesar falooda</div></div><div class="dish-price">₹160–180</div></div>
+            <div class="dish"><div><div class="dish-name">Buttercoin falooda</div></div><div class="dish-price">₹170</div></div>
+            <div class="dish"><div><div class="dish-name">Strawberry falooda / rose falooda</div></div><div class="dish-price">₹160</div></div>
+            <div class="dish"><div><div class="dish-name">Chocolate milkshake</div></div><div class="dish-price">₹110</div></div>
+          </div>
+          <div class="dish-block">
+            <div class="dish"><div><div class="dish-name">Kesar pista milkshake</div></div><div class="dish-price">₹120</div></div>
+            <div class="dish"><div><div class="dish-name">Dry fruit milkshake</div></div><div class="dish-price">₹140</div></div>
+            <div class="dish"><div><div class="dish-name">Mango milkshake</div></div><div class="dish-price">₹140</div></div>
+            <div class="dish"><div><div class="dish-name">Strawberry / buttermilk / vanilla milkshake</div></div><div class="dish-price">₹110–120</div></div>
+            <div class="dish"><div><div class="dish-name">Mocktails — pineapple green apple, blueberry, guava, kala khatta, fresh lime</div></div><div class="dish-price">₹70–80</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="signature" id="signature">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">House favourites</div>
+      <h2>What regulars order first.</h2>
+    </div>
+    <div class="sig-grid">
+      <div class="sig-card">
+        <div class="sig-num">01</div>
+        <h3>Chicken hungama gravy</h3>
+        <p>Tender chicken in a creamy, slightly spicy gravy — the dish people come back for, sized for sharing.</p>
+        <div class="sig-price">₹1,010</div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-num">02</div>
+        <h3>Chicken mixed platter</h3>
+        <p>Five kebabs and half a tandoori chicken on one tray. Built for a table of four or more.</p>
+        <div class="sig-price">₹1,610</div>
+      </div>
+      <div class="sig-card">
+        <div class="sig-num">03</div>
+        <h3>Butter chicken &amp; biryani combo</h3>
+        <p>Butter chicken, chicken biryani, gulab jamun and a butter naan — everything in one order.</p>
+        <div class="sig-price">₹399</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="gallery-grid">
+    <img class="tall" src="assets/interior2.png" alt="Dining hall interior with brass-lined panels">
+    <div class="gallery-col">
+      <img src="assets/storefront1.png" alt="Deluxe Family Restaurant storefront at night">
+      <img src="assets/poster1.png" alt="Biryani served for delivery">
+    </div>
+    <div class="gallery-col">
+      <img src="assets/poster2.png" alt="Dishes ready for delivery">
+      <img src="assets/interior3.png" alt="Restaurant seating">
+    </div>
+  </div>
+</section>
+
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div class="visit-grid">
+      <div>
+        <div class="section-head" style="margin-bottom:48px;">
+          <div class="eyebrow">Visit or order in</div>
+          <h2>Find us, or skip the drive.</h2>
+        </div>
+
+        <div class="visit-block visit-card">
+          <h3>Hours</h3>
+          <div class="hours-row"><span class="d">Sunday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+          <div class="hours-row"><span class="d">Monday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+          <div class="hours-row"><span class="d">Tuesday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+          <div class="hours-row"><span class="d">Wednesday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+          <div class="hours-row"><span class="d">Friday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+          <div class="hours-row"><span class="d">Saturday</span><span class="t">11:00 AM – 12:00 AM</span></div>
+        </div>
+
+        <div class="visit-block visit-card">
+          <h3>Order &amp; reservations</h3>
+          <p><a href="tel:+9174100 02825">+9174100 02825</a><br>
+          </p>
+        </div>
+
+        <div class="visit-block visit-card">
+          <h3>Find us on Instagram</h3>
+          <p><a href="https://instagram.com/restaurantdeluxefamily" target="_blank" rel="noopener">@restaurantdeluxefamily</a></p>
+        </div>
+      </div>
+
+      <div class="map-frame">
+        <iframe loading="lazy" src="https://maps.google.com/maps?q=Deluxe%20Family%20Restaurant%20Ahmedabad&t=&z=14&ie=UTF8&iwloc=&output=embed" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brandmark">
+          <div class="dr">DR</div>
+          <div class="name">Deluxe<span>Family Restaurant</span></div>
+        </div>
+        <p>Tandoori · Mughlai · Punjabi · Chinese. Veg &amp; non-veg, halal, no beef. Free home delivery.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Explore</h4>
+        <a href="#story">Our story</a>
+        <a href="#menu">Full menu</a>
+        <a href="#signature">House favourites</a>
+        <a href="#visit">Visit us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+9174100 02825">+9174100 02825</a>
+        <a href="https://instagram.com/restaurantdeluxefamily" target="_blank" rel="noopener">Instagram</a>
+        <p>Ahmedabad, Gujarat</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Deluxe Family Restaurant. All rights reserved.</span>
+      <span>Halal kitchen · No beef</span>
+    </div>
+  </div>
+</footer>
+
+<a class="float-call" href="tel:+9174100 02825" aria-label="Call to order">&#128222;</a>
+
+<script>
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cats = document.querySelectorAll('.menu-cat');
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.dataset.cat;
+      cats.forEach(c => c.classList.toggle('active', c.dataset.cat === target));
+    });
+  });
+</script>
+
+</body>
+</html>
